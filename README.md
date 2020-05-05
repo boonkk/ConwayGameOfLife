@@ -14,11 +14,11 @@
 ## How to run:
 1. cd ConwayGameOfLife
 2. - Maven + Java
-      - mvn clean package
-      - java -jar target\ConwayGameOfLife-1.0.jar 
+      - **mvn clean package**
+      - **java -jar target\ConwayGameOfLife-1.0.jar** 
     (standalone jar file with all dependencies)
    - Maven + JavaFX plugin
-      - mvn compile javafx:run
+      - **mvn compile javafx:run**
       
 ## Game controls
 [Enter] - changes pattern
