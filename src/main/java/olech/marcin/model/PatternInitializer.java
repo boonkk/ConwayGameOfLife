@@ -41,16 +41,16 @@ public class PatternInitializer {
     private boolean[][] insertPatternIntoBoard(boolean[][] board, boolean[][] pattern) {
         int startY = (board.length - pattern.length)/2;
         int startX = (board[0].length - pattern[0].length)/2;
-        int m=0;
-        int n=0;
+        int smallPatternY=0;
+        int smallPatternX=0;
 
-        for(int i=startY; i<startY + pattern.length; i++) {
-            for (int j = startX; j < startX + pattern[0].length; j++) {
-                board[i][j] = pattern[m][n];
-                n++;
+        for(int y=startY; y<startY + pattern.length; y++) {
+            for (int x = startX; x < startX + pattern[0].length; x++) {
+                board[y][x] = pattern[smallPatternY][smallPatternX];
+                smallPatternX++;
             }
-            n=0;
-            m++;
+            smallPatternX=0;
+            smallPatternY++;
         }
         return board;
     }
@@ -58,9 +58,9 @@ public class PatternInitializer {
     private boolean[][] populateRandomPattern() {
         boolean[][] board = new boolean[rows][cols];
         Random random = new Random();
-        for(int i=0; i<rows; i++) {
-            for (int j=0;j<cols; j++) {
-                board[i][j] = random.nextBoolean();
+        for(int y=0; y<rows; y++) {
+            for (int x=0;x<cols; x++) {
+                board[y][x] = random.nextBoolean();
             }
         }
         return board;
