@@ -10,6 +10,9 @@
  - Maven 3.6.3
 ## How to run:
 1. cd ConwayGameOfLife
-2. mvn clean package
-3. java -jar target\ConwayGameOfLife-1.0.jar 
-  (standalone jar file with all dependencies)
+2. - Maven + Java
+      - mvn clean package
+      - java -jar target\ConwayGameOfLife-1.0.jar 
+    (standalone jar file with all dependencies)
+   - Maven + JavaFX plugin
+      - mvn compile javafx:run
