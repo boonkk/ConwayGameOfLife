@@ -23,7 +23,6 @@ public class Controller {
         this.fxmlController = fxmlController;
         this.canvas = fxmlController.getCellCanvas();
         initModel();
-        System.out.println(tickLengthMillis);
     }
 
     private void initModel() {
