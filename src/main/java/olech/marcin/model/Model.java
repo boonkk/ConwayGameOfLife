@@ -1,8 +1,5 @@
 package olech.marcin.model;
 
-import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.paint.Color;
-
 public class Model {
     public static final int BOARD_HEIGHT = 500;
     public static final int BOARD_WIDTH = 500;
@@ -13,18 +10,14 @@ public class Model {
     private final int rows;
     private final int cols;
     private boolean[][] cellArray;
-    private final GraphicsContext graphics;
     private Pattern[] patterns = Pattern.values();
     private int currentPatternID = -1;
 
 
     /**
-     * Constructor which initializes board dimensions using  and creates empty board
-     *
-     * @param graphicsContext 2D GraphicsContext obtained from Canvas object
+     * Constructor which initializes board dimensions using Model class constants and creates empty board
      */
-    public Model(GraphicsContext graphicsContext) {
-        this.graphics = graphicsContext;
+    public Model() {
         this.rows = (int) Math.floor(BOARD_HEIGHT / CELL_SIZE);
         this.cols = (int) Math.floor(BOARD_WIDTH / CELL_SIZE);
         cellArray = new boolean[rows][cols];
@@ -37,32 +30,11 @@ public class Model {
         cellArray = new boolean[rows][cols];
         updateCurrentPatternID();
         cellArray = patternInitializer.populate(patterns[currentPatternID]);
-        drawBoard();
     }
 
     private void updateCurrentPatternID() {
         if( ++currentPatternID >= patterns.length )
             currentPatternID = 0;
-    }
-
-
-    private void drawBoard() {
-        graphics.setFill(Color.LIGHTGREY);
-        graphics.fillRect(0, 0, BOARD_HEIGHT, BOARD_WIDTH);
-
-        for (int i = 0; i < cellArray.length; i++) {
-            for (int j = 0; j < cellArray[i].length; j++) {
-                graphics.setFill(Color.LIGHTSLATEGREY);
-                graphics.fillOval(i * CELL_SIZE, j * CELL_SIZE, CELL_SIZE, CELL_SIZE);
-
-                if( cellArray[i][j] ) {
-                    graphics.setFill(Color.RED);
-                } else {
-                    graphics.setFill(Color.LIGHTGRAY);
-                }
-                graphics.fillOval((i * CELL_SIZE) + 1, (j * CELL_SIZE) + 1, CELL_SIZE - 2, CELL_SIZE - 2);
-            }
-        }
     }
 
     /**
@@ -90,7 +62,6 @@ public class Model {
             }
         }
         cellArray = next;
-        drawBoard();
     }
 
     private int countAliveNeighbors(int cellY, int cellX) {
@@ -112,5 +83,9 @@ public class Model {
 
     public Pattern getPattern() {
         return patterns[currentPatternID];
+    }
+
+    public boolean[][] getCellArray() {
+        return cellArray;
     }
 }
