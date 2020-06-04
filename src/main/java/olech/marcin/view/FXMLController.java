@@ -4,10 +4,6 @@ package olech.marcin.view;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
-
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
@@ -31,9 +27,6 @@ public class FXMLController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        ObservableList<Pattern> observableList = FXCollections.observableArrayList();
-        observableList.addAll(Pattern.values());
-
         cellCanvas.setHeight(Model.BOARD_HEIGHT);
         cellCanvas.setWidth(Model.BOARD_WIDTH);
     }
